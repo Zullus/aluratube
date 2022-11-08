@@ -9,7 +9,7 @@ function HomePage() {
   const estilohomepage = { 
         // background: "red" 
     };
-    const [valorDoFiltro, setvalorDoFiltro] = React.useState("Angular");
+    const [valorDoFiltro, setvalorDoFiltro] = React.useState("");
   return (
     <>
       <CSSReset />
@@ -76,7 +76,7 @@ function Timeline({searchValue, ...props}) {
       {playlistsNames.map((playlistsName) => {
         const videos = props.playlists[playlistsName];
         return (
-          <section>
+          <section key={playlistsName}>
             <h2>{playlistsName}</h2>
             <div>
               {videos.filter((video) => {
@@ -85,7 +85,7 @@ function Timeline({searchValue, ...props}) {
                 return titleNormalized.includes(searchValueNormalized)
               }).map((video) => {
                 return (
-                  <a href={video.url}>
+                  <a key={video.url} href={video.url}>
                     <img src={video.thumb} />
                     <span>{video.title}</span>
                   </a>
